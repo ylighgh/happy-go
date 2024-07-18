@@ -10,6 +10,7 @@ commit_message="$*"
 # 提交和推送Git更改
 git add -A
 git commit -m "$commit_message"
+git tag -d v1.0.0
 git tag v1.0.0
 git push origin v1.0.0
 go list -m github.com/ylighgh/happy-go@v1.0.0
