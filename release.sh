@@ -25,7 +25,7 @@ PATCH=${VERSION_PARTS[2]}
 
 PATCH=$((PATCH + 1))
 
-NEW_TAG="v$MAJOR.$MINOR.$PATCH"
+NEW_TAG="$MAJOR.$MINOR.$PATCH"
 git tag "$NEW_TAG"
 
 git push origin $NEW_TAG
