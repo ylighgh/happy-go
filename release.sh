@@ -29,4 +29,5 @@ NEW_TAG="$MAJOR.$MINOR.$PATCH"
 git tag "$NEW_TAG"
 
 git push origin $NEW_TAG
+git push 
 go list -m github.com/ylighgh/happy-go@$NEW_TAG
