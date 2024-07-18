@@ -10,8 +10,23 @@ commit_message="$*"
 # 提交和推送Git更改
 git add -A
 git commit -m "$commit_message"
-git tag -d v1.0.1
-git tag v1.0.1
-git push origin v1.0.1
-git push
-go list -m github.com/ylighgh/happy-go@v1.0.1
+
+LATEST_TAG=$(git describe --tags --abbrev=0)
+
+if [ -z "$LATEST_TAG" ]; then
+  echo "未能获取到最新的tag"
+  exit 1
+fi
+
+IFS='.' read -r -a VERSION_PARTS <<< "$LATEST_TAG"
+MAJOR=${VERSION_PARTS[0]}
+MINOR=${VERSION_PARTS[1]}
+PATCH=${VERSION_PARTS[2]}
+
+PATCH=$((PATCH + 1))
+
+NEW_TAG="v$MAJOR.$MINOR.$PATCH"
+git tag "$NEW_TAG"
+
+git push origin $NEW_TAG
+go list -m github.com/ylighgh/happy-go@$NEW_TAG
