@@ -1,4 +1,4 @@
-package happy_go
+package hello
 
 import "fmt"
 
