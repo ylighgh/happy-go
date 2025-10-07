@@ -68,3 +68,11 @@ func TestGetCurrentTimestamp(t *testing.T) {
 		t.Errorf("Expected positive timestamp, got %d", value)
 	}
 }
+
+func TestGetCurrentTimestampV2(t *testing.T) {
+	value := GetCurrentTimestamp()
+
+	if value <= 0 {
+		t.Errorf("Expected positive timestamp, got %d", value)
+	}
+}
